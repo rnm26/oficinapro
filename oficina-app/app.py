@@ -62,7 +62,19 @@ def init_db():
                 FOREIGN KEY (veiculo_id) REFERENCES veiculos(id)
             )
         """)
-
+        # NOVA TABELA: Ordens de Serviço (HU09, HU10, HU11, HU12, HU13)
+        cursor.execute("""
+            CREATE TABLE ordens_servico (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                agendamento_id INTEGER NOT NULL,
+                diagnostico TEXT,
+                servicos_executados TEXT,
+                status TEXT DEFAULT 'Aberta',
+                data_abertura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                data_encerramento TIMESTAMP,
+                FOREIGN KEY (agendamento_id) REFERENCES agendamentos(id)
+            )
+        """)
         db.commit()
         db.close()
         print("✅ Banco de dados criado com sucesso!")
