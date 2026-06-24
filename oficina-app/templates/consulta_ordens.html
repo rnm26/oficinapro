@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Ordens de Serviço{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        <i class="bi bi-tools"></i>
+        Ordens de Serviço
+    </h2>
+
+    <div class="card">
+        <div class="card-body">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Agendamento</th>
+                        <th>Status</th>
+                        <th>Data Abertura</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for ordem in ordens %}
+                    <tr>
+                        <td>{{ ordem.id }}</td>
+                        <td>{{ ordem.agendamento_id }}</td>
+                        <td>{{ ordem.status }}</td>
+                        <td>{{ ordem.data_abertura }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
